@@ -1,0 +1,342 @@
+@import url(https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap);
+
+@font-face {
+  font-family: "Armag";
+  src: url(./Armag-Fury.otf);
+}
+.theme {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: auto;
+  margin: 0;
+  padding: 0;
+}
+@keyframes theme-animate-cover-photo {
+  0% {
+    height: 0;
+    animation-timing-function: ease-out;
+  }
+  100% {
+    height: 280px;
+  }
+}
+@keyframes theme-animate-profile-photo {
+  0% {
+    transform: scale(3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes theme-animate-name {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes theme-animate-social {
+  0% {
+    transform: scale(0);
+  }
+  95% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes theme-animate-link {
+  0% {
+    top: 60px;
+    transform: scale(0);
+  }
+  100% {
+    top: 0;
+    transform: scale(1);
+  }
+}
+@keyframes theme-animate-watermark {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .theme * {
+    animation: none !important;
+  }
+}
+.theme a {
+  color: #000;
+  text-decoration: none;
+}
+.theme img {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.theme #app {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  position: relative;
+  z-index: 1;
+}
+.theme #app .cover-photo-wrapper {
+  height: 280px;
+  position: absolute;
+  width: 100%;
+}
+.theme #app .cover-photo-wrapper div.cover-photo {
+  animation: theme-animate-cover-photo 0.8s 0.2s ease-in-out backwards;
+  height: 280px;
+  overflow: hidden;
+}
+.theme #app .cover-photo-wrapper div.cover-photo img {
+  height: 280px;
+  object-fit: cover;
+  width: 100%;
+}
+.theme #app #main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  color: #fff;
+}
+.theme #app #main.no-cover-photo .profile-wrapper {
+  margin-top: 24px;
+}
+.theme #app #main.no-cover-photo .profile-wrapper.no-photo {
+  height: auto;
+  margin-top: 28px;
+}
+.theme #app #main .profile-wrapper {
+  display: flex;
+  flex-direction: column-reverse;
+  margin-bottom: 28px;
+  width: 100%;
+}
+.theme #app #main .profile-wrapper .picture-wrapper {
+  height: 232px;
+  margin-top: -25px;
+  z-index: 1;
+}
+.theme #app #main .profile-wrapper .picture-wrapper .picture {
+  animation: theme-animate-profile-photo 1s ease-in-out backwards;
+  border-radius: 50%;
+  display: inline-flex;
+  overflow: hidden;
+}
+.theme #app #main .profile-wrapper .picture-wrapper .picture img {
+  height: 232px;
+  object-fit: cover;
+  width: 232px;
+}
+.theme #app #main .profile-wrapper .name-bio-wrapper {
+  display: flex;
+  flex-direction: column-reverse;
+  overflow-wrap: break-word;
+  z-index: 2;
+}
+.theme #app #main .profile-wrapper .name-bio-wrapper .bio,
+.theme #app #main .profile-wrapper .name-bio-wrapper .name {
+  margin-top: 24px;
+  overflow: hidden;
+  text-transform: uppercase;
+}
+.theme #app #main .profile-wrapper .name-bio-wrapper .name {
+  font-family: "Armag", "Playfair Display", serif;
+  font-size: 64px;
+  font-weight: var(--primary-font-weight, 400);
+  letter-spacing: var(--primary-font, -4.5px);
+  line-height: 62px;
+  margin: 20px auto 0;
+  max-width: 340px;
+  min-height: 120px;
+  width: 100%;
+}
+.theme #app #main .profile-wrapper .name-bio-wrapper .bio {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  line-height: 17px;
+}
+.theme #app #main .profile-wrapper .name-bio-wrapper .content {
+  animation: theme-animate-name 0.5s 0.5s ease-in-out backwards;
+}
+.theme #app #main section:not(.socials) {
+  --animation-timing: calc(var(--animation-delay) / 5);
+  animation: theme-animate-link calc(var(--animation-timing) + 0.2s) 0.8s
+    backwards;
+}
+.theme #app #main .socials .social {
+  animation: theme-animate-social 0.5s 0.5s ease-in;
+}
+.theme #app #main .links {
+  counter-reset: link-number;
+}
+.theme #app #main .links .link {
+  --animation-timing: calc(var(--animation-delay) / 5);
+  animation: theme-animate-link calc(var(--animation-timing) + 0.4s) 0.3s
+    backwards;
+  border-bottom: 1px solid var(--biositeColorProfile-borderColor-theme);
+  counter-increment: link-number;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  line-height: 16px;
+  min-height: 68px;
+  padding: 10px 28px 10px 0;
+  text-transform: uppercase;
+  color: #fff;
+}
+.theme #app #main .links .link .link-text {
+  text-align: left;
+}
+.theme #app #main .links .link::after {
+  content: counter(link-number, decimal-leading-zero);
+  font-family: "Armag", "Playfair Display", serif;
+  font-size: 27px;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  top: 23px;
+}
+.skip-link {
+  position: absolute;
+  top: -50px;
+  left: 0;
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  z-index: 100;
+}
+.skip-link:focus {
+  top: 0;
+}
+#app #main .main-content {
+  z-index: 10001;
+}
+#app #main .main-content .name-bio-wrapper .bio {
+  width: 100%;
+  max-width: 485px;
+  margin: 0 auto;
+}
+#app #main .main-content .name-bio-wrapper .bio .content {
+  padding: 0 12px;
+}
+#app #main .main-content .socials {
+  display: inline-flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  padding: 0;
+}
+#app #main .main-content .socials .social {
+  display: block;
+  height: 40px;
+  width: 40px;
+  filter: var(--biositeColorProfile-iconFilter);
+}
+#app #main .main-content .socials .social.email {
+  background: url(data:image/svg+xml,%3Csvg%20width%3D%2223%22%20height%3D%2219%22%20viewBox%3D%220%200%2023%2019%22%20fill%3D%22%231b1b1b%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cg%20clip-path%3D%22url%28%23clip0_1529_2757%29%22%3E%0A%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M2.60654%203.05401C2.77191%202.72695%203.11201%202.5%203.5%202.5H19.5C19.888%202.5%2020.2281%202.72695%2020.3935%203.05401L11.5%209.27943L2.60654%203.05401ZM0.500052%203.48226C0.49988%203.49243%200.499863%203.5026%200.5%203.51276V15.5C0.5%2017.1523%201.84772%2018.5%203.5%2018.5H19.5C21.1523%2018.5%2022.5%2017.1523%2022.5%2015.5V3.51186M20.5%205.42074V15.5C20.5%2016.0477%2020.0477%2016.5%2019.5%2016.5H3.5C2.95228%2016.5%202.5%2016.0477%202.5%2015.5V5.42075L10.9265%2011.3193C11.2709%2011.5603%2011.7291%2011.5603%2012.0735%2011.3193L20.5%205.42074ZM22.5%203.48336C22.4909%201.83868%2021.1467%200.5%2019.5%200.5H3.5C1.85363%200.5%200.509657%201.83808%200.500052%203.48226%22%20fill%3D%22%231b1b1b%22%2F%3E%0A%3C%2Fg%3E%0A%3Cdefs%3E%0A%3CclipPath%20id%3D%22clip0_1529_2757%22%3E%0A%3Crect%20width%3D%2222.0001%22%20height%3D%2218%22%20fill%3D%22%231b1b1b%22%20transform%3D%22translate%280.499908%200.5%29%22%2F%3E%0A%3C%2FclipPath%3E%0A%3C%2Fdefs%3E%0A%3C%2Fsvg%3E%0A)
+    no-repeat center;
+}
+#app #main .main-content .socials .social.instagram {
+  background: url(data:image/svg+xml,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22%231b1b1b%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cg%20clip-path%3D%22url%28%23clip0_1529_2615%29%22%3E%0A%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M10%200C7.28389%200%206.94389%200.0111111%205.87722%200.06C4.81278%200.108889%204.08556%200.277778%203.44944%200.525C2.78223%200.776076%202.17781%201.16967%201.67833%201.67833C1.16977%202.17789%200.776188%202.78229%200.525%203.44944C0.277778%204.08556%200.108333%204.81278%200.06%205.87778C0.0116667%206.94389%200%207.28333%200%2010C0%2012.7167%200.0111111%2013.0561%200.06%2014.1228C0.108889%2015.1872%200.277778%2015.9144%200.525%2016.5506C0.776076%2017.2178%201.16967%2017.8222%201.67833%2018.3217C2.23389%2018.8772%202.79222%2019.2194%203.44944%2019.475C4.08556%2019.7222%204.81278%2019.8917%205.87722%2019.94C6.94389%2019.9883%207.28389%2020%2010%2020C12.7161%2020%2013.0561%2019.9889%2014.1228%2019.94C15.1872%2019.8911%2015.9144%2019.7222%2016.5506%2019.475C17.2178%2019.2239%2017.8222%2018.8303%2018.3217%2018.3217C18.8772%2017.7661%2019.2194%2017.2078%2019.475%2016.5506C19.7222%2015.9144%2019.8917%2015.1872%2019.94%2014.1228C19.9883%2013.0561%2020%2012.7161%2020%2010C20%207.28389%2019.9889%206.94389%2019.94%205.87722C19.8911%204.81278%2019.7222%204.08556%2019.475%203.44944C19.2239%202.78224%2018.8303%202.17782%2018.3217%201.67833C17.8221%201.16977%2017.2177%200.776188%2016.5506%200.525C15.9144%200.277778%2015.1872%200.108333%2014.1222%200.06C13.0561%200.0116667%2012.7167%200%2010%200ZM10%201.80167C12.67%201.80167%2012.9867%201.81222%2014.0411%201.86C15.0161%201.90444%2015.5456%202.06722%2015.8978%202.20444C16.3644%202.38556%2016.6978%202.60278%2017.0478%202.95222C17.3978%203.30222%2017.6144%203.63556%2017.7956%204.10222C17.9328%204.45444%2018.0956%204.98389%2018.14%205.95889C18.1878%207.01333%2018.1983%207.33%2018.1983%2010C18.1983%2012.67%2018.1878%2012.9867%2018.14%2014.0411C18.0956%2015.0161%2017.9328%2015.5456%2017.7956%2015.8978C17.6354%2016.3322%2017.3798%2016.7251%2017.0478%2017.0478C16.6978%2017.3978%2016.3644%2017.6144%2015.8978%2017.7956C15.5456%2017.9328%2015.0161%2018.0956%2014.0411%2018.14C12.9867%2018.1878%2012.6706%2018.1983%2010%2018.1983C7.32944%2018.1983%207.01333%2018.1878%205.95889%2018.14C4.98389%2018.0956%204.45444%2017.9328%204.10222%2017.7956C3.66782%2017.6354%203.27486%2017.3798%202.95222%2017.0478C2.62017%2016.7251%202.36465%2016.3322%202.20444%2015.8978C2.06722%2015.5456%201.90444%2015.0161%201.86%2014.0411C1.81222%2012.9867%201.80167%2012.67%201.80167%2010C1.80167%207.33%201.81222%207.01333%201.86%205.95889C1.90444%204.98389%202.06722%204.45444%202.20444%204.10222C2.38556%203.63556%202.60278%203.30222%202.95222%202.95222C3.30222%202.60222%203.63556%202.38556%204.10222%202.20444C4.45444%202.06722%204.98389%201.90444%205.95889%201.86C7.01333%201.81222%207.33%201.80167%2010%201.80167Z%22%20fill%3D%22%231b1b1b%22%2F%3E%0A%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M10%2013.3368C9.56184%2013.3368%209.12795%2013.2505%208.72313%2013.0828C8.31831%2012.9151%207.95047%2012.6693%207.64064%2012.3595C7.3308%2012.0497%207.08502%2011.6818%206.91734%2011.277C6.74965%2010.8722%206.66335%2010.4383%206.66335%2010.0001C6.66335%209.56192%206.74965%209.12803%206.91734%208.72321C7.08502%208.31838%207.3308%207.95055%207.64064%207.64071C7.95047%207.33088%208.31831%207.0851%208.72313%206.91742C9.12795%206.74973%209.56184%206.66343%2010%206.66343C10.885%206.66343%2011.7336%207.01497%2012.3594%207.64071C12.9851%208.26646%2013.3367%209.11516%2013.3367%2010.0001C13.3367%2010.8851%2012.9851%2011.7337%2012.3594%2012.3595C11.7336%2012.9852%2010.885%2013.3368%2010%2013.3368ZM10%204.86009C8.6368%204.86009%207.32942%205.40163%206.36549%206.36557C5.40155%207.3295%204.86002%208.63688%204.86002%2010.0001C4.86002%2011.3633%205.40155%2012.6707%206.36549%2013.6346C7.32942%2014.5986%208.6368%2015.1401%2010%2015.1401C11.3632%2015.1401%2012.6706%2014.5986%2013.6345%2013.6346C14.5985%2012.6707%2015.14%2011.3633%2015.14%2010.0001C15.14%208.63688%2014.5985%207.3295%2013.6345%206.36557C12.6706%205.40163%2011.3632%204.86009%2010%204.86009ZM16.6356%204.76676C16.6356%205.089%2016.5076%205.39804%2016.2797%205.6259C16.0519%205.85375%2015.7428%205.98176%2015.4206%205.98176C15.0983%205.98176%2014.7893%205.85375%2014.5614%205.6259C14.3336%205.39804%2014.2056%205.089%2014.2056%204.76676C14.2056%204.44452%2014.3336%204.13548%2014.5614%203.90763C14.7893%203.67977%2015.0983%203.55176%2015.4206%203.55176C15.7428%203.55176%2016.0519%203.67977%2016.2797%203.90763C16.5076%204.13548%2016.6356%204.44452%2016.6356%204.76676Z%22%20fill%3D%22%231b1b1b%22%2F%3E%0A%3C%2Fg%3E%0A%3Cdefs%3E%0A%3CclipPath%20id%3D%22clip0_1529_2615%22%3E%0A%3Crect%20width%3D%2220%22%20height%3D%2220%22%20fill%3D%22%231b1b1b%22%2F%3E%0A%3C%2FclipPath%3E%0A%3C%2Fdefs%3E%0A%3C%2Fsvg%3E%0A)
+    no-repeat center;
+}
+#app #main .main-content .socials .social.linkedin {
+  background: url(data:image/svg+xml,%3Csvg%20width%3D%2220%22%20height%3D%2219%22%20viewBox%3D%220%200%2020%2019%22%20fill%3D%22%231b1b1b%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cg%20clip-path%3D%22url%28%23clip0_1529_2699%29%22%3E%0A%3Cpath%20d%3D%22M2.8354%200.000663339C2.5314%20-0.00667066%202.22899%200.0468732%201.94598%200.158145C1.66298%200.269416%201.40508%200.436168%201.18748%200.648587C0.969873%200.861007%200.79695%201.1148%200.678886%201.39504C0.560822%201.67528%200.5%201.97631%200.5%202.28041C0.5%202.5845%200.560822%202.88553%200.678886%203.16577C0.79695%203.44601%200.969873%203.6998%201.18748%203.91222C1.40508%204.12464%201.66298%204.29139%201.94598%204.40267C2.22899%204.51394%202.5314%204.56748%202.8354%204.56015C3.43051%204.54579%203.99641%204.2993%204.41222%203.87333C4.82804%203.44736%205.06081%202.87568%205.06081%202.28041C5.06081%201.68513%204.82804%201.11345%204.41222%200.687479C3.99641%200.261509%203.43051%200.0150199%202.8354%200.000663339ZM14.8145%206.05256C12.9135%206.05256%2011.6493%207.09393%2011.1266%208.08357H11.043V6.34308H7.31131V18.9457H11.2088V12.7266C11.2088%2011.0843%2011.5352%209.49373%2013.5715%209.49373C15.5773%209.49373%2015.6038%2011.3483%2015.6038%2012.8102V18.9457H19.5V12.0222C19.5%208.6341%2018.7783%206.05256%2014.8145%206.05256ZM0.927769%206.34308V18.9457H4.86641V6.34308H0.927769Z%22%20fill%3D%22%231b1b1b%22%2F%3E%0A%3C%2Fg%3E%0A%3Cdefs%3E%0A%3CclipPath%20id%3D%22clip0_1529_2699%22%3E%0A%3Crect%20width%3D%2219%22%20height%3D%2218.9457%22%20fill%3D%22%231b1b1b%22%20transform%3D%22translate%280.5%29%22%2F%3E%0A%3C%2FclipPath%3E%0A%3C%2Fdefs%3E%0A%3C%2Fsvg%3E%0A)
+    no-repeat center;
+}
+#app #main .main-content .socials .social.spotify {
+  background: url(data:image/svg+xml,%3Csvg%20width%3D%2223%22%20height%3D%2223%22%20viewBox%3D%220%200%2023%2023%22%20fill%3D%22%231b1b1b%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M17.7516%2010.1568C14.2796%208.09529%208.4748%207.87829%205.16554%208.90904C4.62304%209.07179%204.08054%208.74629%203.91779%208.25804C3.75504%207.71554%204.08054%207.17304%204.56879%207.01029C8.42055%205.87103%2014.7678%206.08803%2018.7823%208.47504C19.2706%208.74629%2019.4333%209.39729%2019.1621%209.88554C18.8908%2010.2653%2018.2398%2010.428%2017.7516%2010.1568M17.6429%2013.1944C17.3717%2013.5742%2016.8834%2013.7369%2016.5037%2013.4657C13.5742%2011.6754%209.12568%2011.1329%205.70792%2012.2179C5.27392%2012.3264%204.78567%2012.1094%204.67717%2011.6754C4.56867%2011.2414%204.78567%2010.7532%205.21967%2010.6447C9.17993%209.45118%2014.0624%2010.0479%2017.4259%2012.1094C17.7514%2012.2722%2017.9142%2012.8147%2017.6429%2013.1944M16.341%2016.1784C16.124%2016.5039%2015.7443%2016.6124%2015.4187%2016.3954C12.869%2014.8222%209.66824%2014.4967%205.87073%2015.3647C5.49098%2015.4732%205.16548%2015.2019%205.05698%2014.8764C4.94848%2014.4967%205.21973%2014.1712%205.54523%2014.0627C9.66824%2013.1404%2013.2487%2013.5202%2016.0698%2015.2562C16.4495%2015.4189%2016.5038%2015.8529%2016.341%2016.1784M11.35%200.5C5.38251%200.5%200.5%205.38251%200.5%2011.35C0.5%2017.3175%205.38251%2022.2%2011.35%2022.2C17.3175%2022.2%2022.2%2017.3175%2022.2%2011.35C22.2%205.38251%2017.3718%200.5%2011.35%200.5%22%20fill%3D%22%231b1b1b%22%2F%3E%0A%3C%2Fsvg%3E%0A)
+    no-repeat center;
+}
+#app {
+  background: #1c1c1c;
+  min-height: 100vh;
+}
+.links .link {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  box-sizing: border-box;
+  position: relative;
+}
+.links .link .link-text {
+  display: flex;
+  align-items: center;
+}
+section {
+  margin: 21px auto;
+  max-width: 485px;
+  padding: 0 25px;
+}
+body {
+  background: #000;
+  color: rgba(255, 255, 255, 0.87);
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.link {
+  border-bottom: 1px solid #53565a !important;
+}
+.social {
+  filter: brightness(3.5) !important;
+  padding: 0 0.5rem !important;
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.logo {
+  animation: fade-in 2s ease-in;
+}
+
+video {
+  max-width: 100%;
+  margin: 4rem 0;
+}
+
+.video-container {
+  position: relative;
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  border-radius: 50%;
+  padding: 2rem;
+  outline: 1px solid #eeeeee;
+  background: transparent;
+  color: #eeeeee;
+  font-size: 3rem;
+  height: 200px;
+  width: 200px;
+  transition: opacity 0.5s ease;
+}
+.fade-out {
+  opacity: 0;
+}
